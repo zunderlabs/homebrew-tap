@@ -27,3 +27,7 @@ See the upstream [distribution documentation](https://github.com/zunderlabs/zund
 ## Licence
 
 Zunder Guard is source-available under the [Elastic License 2.0](LICENSE), not open source. [NOTICE](NOTICE) preserves the product's licensing and trademark notices; source-file references in that notice refer to the upstream repository. Each binary archive supplies its own `THIRD_PARTY_LICENSES.md` alongside `LICENSE` and `NOTICE`.
+
+## Preliminary release checks
+
+A maintainer can manually run the preliminary release workflow on free public-repository runners for macOS ARM64, Linux ARM64 and Linux x86-64 after the signed public release is available. It requires the approved tooling commit and an owned protected environment, verifies the release assets, and collects paper-mode Homebrew observations without venue wallet keys. This tooling is prepared; adding it establishes no runtime results and does not replace maintainer review or release-channel evidence.
