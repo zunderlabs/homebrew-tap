@@ -18,9 +18,9 @@ Run Homebrew as your normal user. Follow the [installation and lifecycle guide](
 
 The product release workflow opens a PR containing the exact `zunder-guard.rb` asset from a signed release. Before executing it, this tap's CI verifies the checksum manifest with Sigstore, checks the exact formula hash and requires the latest stable upstream release. Native jobs cover macOS and Linux on ARM64 and x86-64, including paper-service restart and state preservation through reinstall and removal.
 
-An empty bootstrap does not run or pass formula installation checks. The first formula PR triggers all four jobs. Changes to this workflow also trigger verification on PRs. Paper CI does not prove mainnet credential handling, host reboot or licence activation: separate release and Homebrew channel observations are required before publication.
+Every PR runs the four required jobs, including documentation changes. When neither the base nor candidate contains a formula, each job explicitly reports bootstrap documentation only: no formula installation was tested. Removing an existing formula fails. Once a formula exists, every PR runs its signature verification and native lifecycle checks. Paper CI does not prove mainnet credential handling, host reboot or licence activation: separate release and Homebrew channel observations are required before publication.
 
-See the upstream [Homebrew release procedure](https://github.com/zunderlabs/zunder-guard/blob/main/deploy/guard/packaging/homebrew/README.md) for maintainer setup and evidence requirements. Update this README's preparation status when the first verified formula is merged.
+See the upstream [distribution documentation](https://github.com/zunderlabs/zunder-guard/blob/main/deploy/guard/README.md) for installation and verification guidance. Update this README's preparation status when the first verified formula is merged.
 
 ## Licence
 
