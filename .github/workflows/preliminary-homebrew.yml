@@ -1,0 +1,110 @@
+# Candidate for zunderlabs/homebrew-tap/.github/workflows/preliminary-homebrew.yml.
+# Preparation only: no formula publication, no repository/secret changes performed.
+name: preliminary-homebrew-public-release
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: Exact final public signed v1.0.1 source commit
+        required: true
+        type: string
+      manifest_sha256:
+        description: Exact independently verified public SHA256SUMS digest
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: preliminary-homebrew-v1.0.1
+  cancel-in-progress: false
+jobs:
+  native-paper-channel:
+    if: github.repository == 'zunderlabs/homebrew-tap' && github.ref == 'refs/heads/main'
+    environment: guard-preliminary-homebrew-v101-20261008-a7d94c2e
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-15]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Refuse non-public/unbound or unreviewed execution
+        env:
+          SOURCE: ${{ inputs.source }}
+          MANIFEST: ${{ inputs.manifest_sha256 }}
+          APPROVED_WORKFLOW_SHA: ${{ vars.GUARD_PRELIM_APPROVED_WORKFLOW_SHA }}
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ $SOURCE =~ ^[0-9a-f]{40}$ && $MANIFEST =~ ^[0-9a-f]{64}$ && $APPROVED_WORKFLOW_SHA =~ ^[0-9a-f]{40}$ ]]
+          [ "$GITHUB_SHA" = "$APPROVED_WORKFLOW_SHA" ]
+          [ "$(git rev-parse HEAD)" = "$GITHUB_SHA" ]
+          [ ! -e Formula/zunder-guard.rb ]
+          gh api repos/zunderlabs/zunder-guard/releases/tags/v1.0.1 | jq -e '.tag_name == "v1.0.1" and .draft == false and .prerelease == false and (.published_at | type) == "string"' >/dev/null
+      - uses: slsa-framework/slsa-verifier/actions/installer@ea584f4502babc6f60d9bc799dbbb13c1caa9ee6 # v2.7.1
+      - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+        with:
+          cosign-release: v3.1.3
+      - uses: Homebrew/actions/setup-homebrew@9ffcbcc2c89631400988e8d4b1e3ac17dbbe3fe9
+        with:
+          stable: true
+      - name: Genuine GNU checksum utility for unchanged upstream verifier on macOS
+        if: runner.os == 'macOS'
+        shell: bash
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: '1'
+          HOMEBREW_NO_INSTALL_CLEANUP: '1'
+          HOMEBREW_NO_ANALYTICS: '1'
+        run: |
+          set -euo pipefail
+          brew list --versions coreutils >/dev/null || brew install coreutils
+          echo "$(brew --prefix coreutils)/libexec/gnubin" >> "$GITHUB_PATH"
+      - name: Full unchanged upstream signed asset/source/CI verifier
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE: ${{ inputs.source }}
+          MANIFEST: ${{ inputs.manifest_sha256 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          GITHUB_REPOSITORY=zunderlabs/zunder-guard bash .github/scripts/verify-release-assets.sh v1.0.1 "$RUNNER_TEMP/guard-homebrew-verified"
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'guard-homebrew-verified'
+          assert json.loads((p/'.verified-release-source.json').read_text())=={'tag':'v1.0.1','source':os.environ['SOURCE']}
+          assert hashlib.sha256((p/'SHA256SUMS').read_bytes()).hexdigest()==os.environ['MANIFEST']
+          PY
+      - name: Prepare Linux user service manager only on this disposable runner
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo loginctl enable-linger "$USER"
+          sudo systemctl start "user@$(id -u).service"
+          echo "XDG_RUNTIME_DIR=/run/user/$(id -u)" >> "$GITHUB_ENV"
+          echo "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus" >> "$GITHUB_ENV"
+      - name: Actual preliminary paper channel observations
+        env:
+          GUARD_PRELIM_LICENCE: ${{ secrets.GUARD_PRELIM_V101_20261008_A7D94C2E_LICENCE }}
+          GUARD_PRELIM_ACCOUNT: ${{ secrets.GUARD_PRELIM_V101_20261008_A7D94C2E_ACCOUNT }}
+          SOURCE: ${{ inputs.source }}
+          MANIFEST: ${{ inputs.manifest_sha256 }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          python3 -B .github/scripts/homebrew-journey.py --assets "$RUNNER_TEMP/guard-homebrew-verified" --work "$RUNNER_TEMP/guard-homebrew-observed" --source "$SOURCE" --manifest-sha256 "$MANIFEST"
+      - name: Upload only structured redacted observations, including honest partial failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: preliminary-homebrew-${{ matrix.os }}
+          path: ${{ runner.temp }}/guard-homebrew-observed/observations.json
+          if-no-files-found: warn
+          retention-days: 7
