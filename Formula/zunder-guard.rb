@@ -9,29 +9,29 @@
 class ZunderGuard < Formula
   desc "Self-hosted risk firewall between trading bots or AI agents and Hyperliquid"
   homepage "https://zunderlabs.com"
-  version "1.0.0-rc.5"
+  version "1.0.0-rc.6"
   # Source-available, not open source: Elastic License 2.0.
   license "Elastic-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.5/zunder-guard-v1.0.0-rc.5-darwin-arm64.tar.gz"
-      sha256 "f8b19d57a7aabbfd10a5d2d5912486cd0e8cdb23dec80ac9cb8e0b64db030dbe"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.6/zunder-guard-v1.0.0-rc.6-darwin-arm64.tar.gz"
+      sha256 "e56635f1d756977c59296525ec77ef97aa9607be98661ce095da375c1dc051a4"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.5/zunder-guard-v1.0.0-rc.5-darwin-amd64.tar.gz"
-      sha256 "21ea1a660f8959c117b3caf10926ee009d92d41e80f2e498697e757362a03002"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.6/zunder-guard-v1.0.0-rc.6-darwin-amd64.tar.gz"
+      sha256 "431808e918f20d36d2af47bc17d0988e9f420932ed832d5b5898d728658fbd23"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.5/zunder-guard-v1.0.0-rc.5-linux-arm64.tar.gz"
-      sha256 "dc8f0aedd310f2af8a615efb9a72c3a84ea9a46c8f21d062684d5f6edf5463d0"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.6/zunder-guard-v1.0.0-rc.6-linux-arm64.tar.gz"
+      sha256 "cf8a8b7004a0b40460b55f8a1c36534c781ebaa67cbe609b3a21af821b7d9744"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.5/zunder-guard-v1.0.0-rc.5-linux-amd64.tar.gz"
-      sha256 "eeb12fd06ce2b5184e4b3936339d78a1bdce14d2e524b4cbe3e808b0c09f0552"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.6/zunder-guard-v1.0.0-rc.6-linux-amd64.tar.gz"
+      sha256 "38612d251e4b54182b93f9796f6ec7e0650dd59850e69ab769b7a5de2f2ebc26"
     end
   end
 
