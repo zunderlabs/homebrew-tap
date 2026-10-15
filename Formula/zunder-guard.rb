@@ -9,29 +9,29 @@
 class ZunderGuard < Formula
   desc "Self-hosted risk firewall between trading bots or AI agents and Hyperliquid"
   homepage "https://zunderlabs.com"
-  version "1.0.0-rc.17"
+  version "1.0.0-rc.18"
   # Source-available, not open source: Elastic License 2.0.
   license "Elastic-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.17/zunder-guard-v1.0.0-rc.17-darwin-arm64.tar.gz"
-      sha256 "d452fad57e9135d1fad970b3a77dfb770180318451f0235636600a812cad4b9d"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.18/zunder-guard-v1.0.0-rc.18-darwin-arm64.tar.gz"
+      sha256 "655a0d9ba7398fa6040c376532797e6a9f0db1fe94253fa5e07d5705b8e93e48"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.17/zunder-guard-v1.0.0-rc.17-darwin-amd64.tar.gz"
-      sha256 "c9b33866d0d11d4ba4641e081e31ed99bce421dad80cd6465c597c03115de7af"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.18/zunder-guard-v1.0.0-rc.18-darwin-amd64.tar.gz"
+      sha256 "1d77bacb727b4e0bbd8f1f37aa8fa7e424c41e4edd20d49f78a3891d7e5c693f"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.17/zunder-guard-v1.0.0-rc.17-linux-arm64.tar.gz"
-      sha256 "e2657ed1e36e0daa3bc73eece8268ae1e905ee31af7b871d77b1cfc05c91e801"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.18/zunder-guard-v1.0.0-rc.18-linux-arm64.tar.gz"
+      sha256 "02c9a7d5d9022f828dbfb013287809cc8e12571982788d4967c834b018837dc4"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.17/zunder-guard-v1.0.0-rc.17-linux-amd64.tar.gz"
-      sha256 "8b8d34c7a591914377b48ef35ee5b8b0d2973f17831bea86c31f8e4bf738277e"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.18/zunder-guard-v1.0.0-rc.18-linux-amd64.tar.gz"
+      sha256 "5334fd3b8c7a6c0bd7fb7c011b7937adee42411d0fd9c43c940c10980629bff7"
     end
   end
 
