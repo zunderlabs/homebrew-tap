@@ -9,29 +9,29 @@
 class ZunderGuard < Formula
   desc "Self-hosted risk firewall between trading bots or AI agents and Hyperliquid"
   homepage "https://zunderlabs.com"
-  version "1.0.0-rc.20"
+  version "1.0.0"
   # Source-available, not open source: Elastic License 2.0.
   license "Elastic-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.20/zunder-guard-v1.0.0-rc.20-darwin-arm64.tar.gz"
-      sha256 "6a390b4f58aa31b68da3444030e055d9b140d561f31c9b1c8cc91d82d576bbd9"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-darwin-arm64.tar.gz"
+      sha256 "1f69576994770f8b1f3b41f9295aa8f001514503a71da303495a700059d404ee"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.20/zunder-guard-v1.0.0-rc.20-darwin-amd64.tar.gz"
-      sha256 "2773fa18dae0475598215218db014675caf147d1fea6f17f63404eb2084118e9"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-darwin-amd64.tar.gz"
+      sha256 "ee30384677c6480333dbad5e8918c6e9a18257897236c71b393c12fe9c9ee1ae"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.20/zunder-guard-v1.0.0-rc.20-linux-arm64.tar.gz"
-      sha256 "46261cdabffe410a5d7bffc19277ad229adfc6f58f529a778d48a9aec153fd9d"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-linux-arm64.tar.gz"
+      sha256 "b5c8a7cf428deafa779a1464685275d217ede7ff0ed8141351247bb9e2151be8"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0-rc.20/zunder-guard-v1.0.0-rc.20-linux-amd64.tar.gz"
-      sha256 "ae2ba875a5f5354a9e63066fad54c641f77f9cb5266084e5bfabdfd5da842e1d"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-linux-amd64.tar.gz"
+      sha256 "ee064da85a6ac5404005985179d9c14b00c957c016ff053efda9a451bba61c36"
     end
   end
 
