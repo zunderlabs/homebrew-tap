@@ -9,29 +9,29 @@
 class ZunderGuard < Formula
   desc "Self-hosted risk firewall between trading bots or AI agents and Hyperliquid"
   homepage "https://zunderlabs.com"
-  version "1.0.0"
+  version "1.0.1"
   # Source-available, not open source: Elastic License 2.0.
   license "Elastic-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-darwin-arm64.tar.gz"
-      sha256 "1f69576994770f8b1f3b41f9295aa8f001514503a71da303495a700059d404ee"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-darwin-arm64.tar.gz"
+      sha256 "0f2f01fe61b85f112d7f74b0081f0992223e1d0b46be361401b679fb5330b9f5"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-darwin-amd64.tar.gz"
-      sha256 "ee30384677c6480333dbad5e8918c6e9a18257897236c71b393c12fe9c9ee1ae"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-darwin-amd64.tar.gz"
+      sha256 "b98a33e768b1e1d5ffc7e5b5ceb2eff0be51f0793cf1f861e93d2d526cc75887"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-linux-arm64.tar.gz"
-      sha256 "b5c8a7cf428deafa779a1464685275d217ede7ff0ed8141351247bb9e2151be8"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-linux-arm64.tar.gz"
+      sha256 "fed3c8a84b4c60ec3862904ef30a39165becc198758fc0b729e3cda419da48ac"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.0/zunder-guard-v1.0.0-linux-amd64.tar.gz"
-      sha256 "ee064da85a6ac5404005985179d9c14b00c957c016ff053efda9a451bba61c36"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-linux-amd64.tar.gz"
+      sha256 "e7144b65fb5316ef112c857a260ac0b8cc9981c7290702399e9f8e2cea470885"
     end
   end
 
