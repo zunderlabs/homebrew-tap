@@ -9,29 +9,29 @@
 class ZunderGuard < Formula
   desc "Self-hosted risk firewall between trading bots or AI agents and Hyperliquid"
   homepage "https://zunderlabs.com"
-  version "1.0.1"
+  version "1.0.2-rc.1"
   # Source-available, not open source: Elastic License 2.0.
   license "Elastic-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-darwin-arm64.tar.gz"
-      sha256 "0f2f01fe61b85f112d7f74b0081f0992223e1d0b46be361401b679fb5330b9f5"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.2-rc.1/zunder-guard-v1.0.2-rc.1-darwin-arm64.tar.gz"
+      sha256 "286540c97b9a0492d0e738192c99aa6156066d5ba8aae7d849cf0448c8b834a1"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-darwin-amd64.tar.gz"
-      sha256 "b98a33e768b1e1d5ffc7e5b5ceb2eff0be51f0793cf1f861e93d2d526cc75887"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.2-rc.1/zunder-guard-v1.0.2-rc.1-darwin-amd64.tar.gz"
+      sha256 "2eef5d76a7eb6a9ef919f89c51d7f99049bb0439067e4e693c7a74d4c2adc60b"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-linux-arm64.tar.gz"
-      sha256 "fed3c8a84b4c60ec3862904ef30a39165becc198758fc0b729e3cda419da48ac"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.2-rc.1/zunder-guard-v1.0.2-rc.1-linux-arm64.tar.gz"
+      sha256 "2b02edfe784b73d01c3798b76cf9c9db9b4abe86203eabf2ec140f46f2b02dae"
     end
     on_intel do
-      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.1/zunder-guard-v1.0.1-linux-amd64.tar.gz"
-      sha256 "e7144b65fb5316ef112c857a260ac0b8cc9981c7290702399e9f8e2cea470885"
+      url "https://github.com/zunderlabs/zunder-guard/releases/download/v1.0.2-rc.1/zunder-guard-v1.0.2-rc.1-linux-amd64.tar.gz"
+      sha256 "c90216a4f5b3b9c2a73ee51d6234896c696eef32ad9f134869beda0bef3dfcab"
     end
   end
 
